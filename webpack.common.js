@@ -1,10 +1,10 @@
 const path = require("path");
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const baseDir = path.resolve(__dirname, '../app');
+const baseDir = path.resolve(__dirname, 'app');
 
 module.exports = {
   entry: {
-    main: './app/main.jsx'
+    main: './app/index.js'
   },
   // optimization
   optimization: {
@@ -32,25 +32,27 @@ module.exports = {
     extensions: ['.js', '.jsx', '.json'],
   },
   plugins: [
-    new CopyWebpackPlugin([
-      path.resolve(baseDir, 'config/config.json'),
-      {
-        from: path.resolve(baseDir, 'config/locales'),
-        to: 'locales'
-      },
-      {
-        from: {
-          glob: './images/**/*',
-          dot: true,
+    new CopyWebpackPlugin({
+      patterns: [
+        path.resolve(baseDir, 'config', 'config.json'),
+        {
+          from: path.resolve(baseDir, 'config', 'locales'),
+          to: 'locales'
         },
-      },
-      {
-        from: {
-          glob: './public/assets/**/*',
-          dot: true,
+        {
+          from: path.resolve(__dirname, 'images'),
+          globOptions: {
+            dot: true,
+          },
         },
-      }
-    ])
+        {
+          from: path.resolve(__dirname, 'public'),
+          globOptions: {
+            dot: true,
+          },
+        }
+      ]
+    })
   ],
   module: {
     rules: [
