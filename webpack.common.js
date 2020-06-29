@@ -4,7 +4,7 @@ const baseDir = path.resolve(__dirname, 'app');
 
 module.exports = {
   entry: {
-    main: './app/index.js'
+    main: './app/index.jsx'
   },
   // optimization
   optimization: {
@@ -41,6 +41,7 @@ module.exports = {
         },
         {
           from: path.resolve(__dirname, 'images'),
+          to: 'images',
           globOptions: {
             dot: true,
           },
