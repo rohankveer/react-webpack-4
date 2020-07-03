@@ -20,7 +20,7 @@ function MainLayout() {
           <PageLayout id={2} />
         </Route>
         <Route path={match.path}>
-          <b>TODO</b>
+          <h4>Home Page </h4>
         </Route>
       </Switch>
     </div>
